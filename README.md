@@ -1,1 +1,1 @@
-# Phasespace-mocap-ros
+# ROS Support for Phasespace motion capture system
