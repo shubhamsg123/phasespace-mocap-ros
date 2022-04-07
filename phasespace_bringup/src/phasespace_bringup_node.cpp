@@ -42,8 +42,9 @@ int main(int argc, char **argv)
     }
     else {
         ROS_ERROR("Failed to get ip address!!");
-        return 0;
+        // return 0;
     }
+    // address = "192.168.1.230";
 
     // simple example
     if (owl.open(address) <= 0 || owl.initialize("timebase=1,1000000") <= 0) {
@@ -72,7 +73,7 @@ int main(int argc, char **argv)
             errors_pub.publish(str);
         }
         else if(event->type_id() == OWL::Type::CAMERA) {
-            if (event->get(cameras) > 0) {
+            if (event->name() == std::string("cameras") && event->get(cameras) > 0) {
                 // read markers and publish
                 phasespace_msgs::Cameras out;
                 for (OWL::Cameras::iterator c = cameras.begin(); c != cameras.end(); c++) {
