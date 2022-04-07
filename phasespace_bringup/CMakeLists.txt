@@ -8,6 +8,9 @@ find_package(catkin REQUIRED COMPONENTS
   phasespace_msgs
   roscpp
   std_msgs
+  geometry_msgs
+  tf2
+  tf2_ros
 )
 
 ###################################
@@ -16,7 +19,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
  INCLUDE_DIRS include
  LIBRARIES ${PROJECT_NAME}
- CATKIN_DEPENDS phasespace_msgs roscpp std_msgs
+ CATKIN_DEPENDS phasespace_msgs roscpp std_msgs geometry_msgs tf2 tf2_ros
 #  DEPENDS system_lib
 )
 
@@ -41,6 +44,9 @@ target_link_libraries(${PROJECT_NAME}_node
   owlsock
   ${catkin_LIBRARIES}
 )
+
+add_executable(phasespace_tf_visualization src/phasespace_tf_visualization.cpp)
+target_link_libraries(phasespace_tf_visualization ${catkin_LIBRARIES})
 
 #############
 ## Install ##
