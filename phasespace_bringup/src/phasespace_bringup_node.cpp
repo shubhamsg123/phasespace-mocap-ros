@@ -82,7 +82,7 @@ int main(int argc, char **argv)
                     cout.flags = c->flags;
                     cout.cond = c->cond;
                     cout.x = c->pose[0] / 1000;
-                    cout.y = c->pose[2] / 1000;
+                    cout.y = -c->pose[2] / 1000;
                     cout.z = c->pose[1] / 1000;
                     cout.qw = c->pose[3];
                     cout.qx = c->pose[4];
@@ -123,7 +123,7 @@ int main(int argc, char **argv)
                     rout.flags = r->flags;
                     rout.cond = r->cond;
                     rout.x = r->pose[0] / 1000;
-                    rout.y = r->pose[2] / 1000;
+                    rout.y = -r->pose[2] / 1000;
                     rout.z = r->pose[1] / 1000;
                     rout.qw = r->pose[3];
                     rout.qx = r->pose[4];
