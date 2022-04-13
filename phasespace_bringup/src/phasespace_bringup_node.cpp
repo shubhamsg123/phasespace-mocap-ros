@@ -86,7 +86,7 @@ int main(int argc, char **argv)
                     cout.z = c->pose[1] / 1000;
                     cout.qw = c->pose[3];
                     cout.qx = c->pose[4];
-                    cout.qy = c->pose[6];
+                    cout.qy = -c->pose[6];
                     cout.qz = c->pose[5];
                     out.cameras.push_back(cout);
                 }
@@ -127,7 +127,7 @@ int main(int argc, char **argv)
                     rout.z = r->pose[1] / 1000;
                     rout.qw = r->pose[3];
                     rout.qx = r->pose[4];
-                    rout.qy = r->pose[6];
+                    rout.qy = -r->pose[6];
                     rout.qz = r->pose[5];
                     out.rigids.push_back(rout);
                 }
