@@ -86,7 +86,7 @@ int main(int argc, char **argv)
                     cout.z = c->pose[1] / 1000;
                     cout.qw = c->pose[3];
                     cout.qx = c->pose[4];
-                    cout.qy = -c->pose[6];
+                    cout.qy = c->pose[6];
                     cout.qz = c->pose[5];
                     out.cameras.push_back(cout);
                 }
