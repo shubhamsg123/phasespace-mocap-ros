@@ -14,5 +14,5 @@ catkin build
 ```
 3. Launching the mocap system
 ```
-roslaunch phasespace_bringup phasespace_mocap.launch server_ip:="<your_mocap_system_ip>"
+roslaunch phasespace_bringup phasespace_mocap.launch server_ip:="<your_mocap_ip>"
 ```
