@@ -9,7 +9,10 @@
 #include <phasespace_msgs/Rigids.h>
 #include <phasespace_msgs/Cameras.h>
 
+// Rigid topic callback function, will be called when there is new messages on the topic.
+// It also publishes tf of rigid bodies
 void poseRigidCallback(const phasespace_msgs::Rigids &msg) {
+	// Transform broadcaster
 	static tf2_ros::TransformBroadcaster br;
 	
 	for(size_t i = 0; i < msg.rigids.size(); i++) {
@@ -28,11 +31,15 @@ void poseRigidCallback(const phasespace_msgs::Rigids &msg) {
 	  	transformStamped.transform.rotation.z = msg.rigids[i].qz;
 	  	transformStamped.transform.rotation.w = msg.rigids[i].qw;
 	 
+	 		// Publishing the tf
 	  	br.sendTransform(transformStamped);
   	}
 }
 
+// Camera topic callback function, will be called when there is new messages on the topic.
+// It also publishes static tf of cameras
 void staticCameraTf(const phasespace_msgs::Cameras &msg) {
+	// Static Transform broadcaster
 	static tf2_ros::StaticTransformBroadcaster static_br;
 	
 	for(size_t i = 0; i < msg.cameras.size(); i++) {
@@ -51,16 +58,19 @@ void staticCameraTf(const phasespace_msgs::Cameras &msg) {
 	  	static_transformStamped.transform.rotation.z = msg.cameras[i].qz;
 	  	static_transformStamped.transform.rotation.w = msg.cameras[i].qw;
 	 
+	 		// Publishing the static tf
 	  	static_br.sendTransform(static_transformStamped);
 	}
 }
 
 int main(int argc, char** argv) {
+	// Initializing the phasespace tf visualization node
   ros::init(argc, argv, "phasespace_tf_visualization");
   ros::NodeHandle nh;
 
   ROS_INFO_STREAM("TF Publishing started.");
   
+  // Rigid and Camera Sunscriber handler
   ros::Subscriber rigidSub = nh.subscribe("/phasespace/rigids", 1000, poseRigidCallback);
   ros::Subscriber cameraSub = nh.subscribe("/phasespace/cameras", 1000, staticCameraTf);
   
