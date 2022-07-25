@@ -32,7 +32,7 @@ include_directories(include
   ${CMAKE_CURRENT_BINARY_DIR}/include
 )
 
-# linkin directories
+# linking directories
 link_directories(${catkin_LIBRARY_DIRS} bin)
 
 # adding owlsock library
