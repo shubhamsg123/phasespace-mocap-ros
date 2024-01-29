@@ -27,6 +27,7 @@ add_message_files(
   Markers.msg
   Rigid.msg
   Rigids.msg
+  states.msg
 )
 
 generate_messages(
